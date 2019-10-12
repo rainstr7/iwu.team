@@ -1,0 +1,38 @@
+<meta charset="utf-8" />
+<script>
+  /*
+Написать функцию, которая считает слова в предложении, состоящие из 4х букв. 
+В предложении нет знаков припенания и все слова разделены пробелом.
+В качестве входных данных - предложение
+В качестве выходных данных - число слов,соответствующих параметрам
+Example:
+input: "Five words in this sentence"
+output: "2"
+*/
+
+  function fourLetters() {
+    var i1 = 0;
+    var i2 = 0;
+    var fWord = 0;
+
+    while (words[i1]) {
+      if (words[i1] == " ") {
+        if (i1 - i2 == 4) {
+          fWord += 1;
+        }
+        i2 = i1 + 1;
+      }
+      if (!words[i1 + 1]) {
+        if (i1 + 1 - i2 == 4) {
+          fWord += 1;
+        }
+      }
+      i1++;
+    }
+    return(fWord);
+  }
+
+  var words = prompt('Input a sentence');
+
+  alert(fourLetters(words) + " four-letter word(s) in a sentence");
+</script>

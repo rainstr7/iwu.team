@@ -1,0 +1,51 @@
+<meta charset="utf-8" />
+<script>
+  /*Напишите функцию, которая проверяет, можно ли из комбинации букв первой строки получить вторую строку. 
+  Каждый символ первой строки может быть использован только один раз. Строки состоят только из букв русского 
+  алфавита в нижнем регистре без пробелов и знаков пунктуации   
+
+  На входе: две непустые строки
+  На выходе: true - если возможно получить вторую строку из комбинации букв первой, иначе false
+  */
+  function myOwnSplice(str, index, num) {
+    var i = 0;
+    newString = "";
+
+    while (str[i]) {
+      if (i != index) {
+        newString += str[i];
+      } else {
+        i = i + num - 1;
+      }
+      i++;
+    }
+    return newString;
+  }
+
+  function canMakeString(s1, s2) {
+    var i1 = 0;
+    var i2 = 0;
+    var flag = 1;
+
+    while (s1[i1]) {
+      i2 = 0;
+      while (s2[i2]) {
+        flag = 0;
+        if (s1[i1] == s2[i2]) {
+          flag = 1;
+          s2 = myOwnSplice(s2, i2, 1);
+          break;
+        }
+        i2++;
+      }
+      if (flag == 0) {
+        return "false";
+      }
+      i1++;
+    }
+    return "True";
+  }
+  var s1 = prompt('Input a sentence one');
+  var s2 = prompt('Input a sentence two');
+  alert(canMakeString(s1, s2));
+</script>
